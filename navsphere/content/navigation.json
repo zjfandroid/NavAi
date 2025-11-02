@@ -1,6 +1,69 @@
 {
   "navigationItems": [
     {
+      "id": "9999",
+      "title": "投研报告",
+      "icon": "Star",
+      "subCategories": [
+        {
+          "id": "cbb3e33d-408b-41ba-9e9a-e0444303e3fd",
+          "title": "A股市场",
+          "icon": "Book",
+          "description": "",
+          "enabled": true,
+          "items": [{
+              "id": "9_1",
+              "title": "海螺水泥",
+              "href": "/html/hlsn.html",
+              "description": "水泥行业龙头，当前正处于行业周期底部与价值重估的关键节点",
+              "icon": "",
+              "enabled": true
+            }]
+        },
+        {
+          "id": "cbb3e33d-408b-41ba-9e9a-e0444303e3fd",
+          "title": "美股市场",
+          "icon": "Book",
+          "description": "",
+          "enabled": true,
+          "items": [{
+              "id": "9_1",
+              "title": "CRCL投资分析报告",
+              "href": "/html/crcl.html",
+              "description": "稳定币第一股的估值分析与投资前景展望",
+              "icon": "https://msx.com/files/uploads/stock_icons/CRCL_icon.png",
+              "enabled": true
+            }]
+        }
+      ],
+      "description": "",
+      "enabled": true
+    },
+    {
+      "id": "10000",
+      "title": "财务自由",
+      "icon": "https://msx.com/files/uploads/stock_icons/COIN_icon.png",
+      "items": [{
+          "id": "1_2",
+          "title": "Msx-买美股",
+          "href": "https://msx.com/?code=6pn418",
+          "description": "基于区块链的去中心化交易所，提供安全、透明、高效的交易服务。",
+          "icon": "data:image/png;base64,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",
+          "enabled": true
+        },
+        {
+          "id": "1_2",
+          "title": "Unifai-交易自动化",
+          "href": "https://chat.unifai.network?r=xefcky4d",
+          "description": "可视化的自动化交易与数据分析平台，支持自定义策略、指标和自动执行。",
+          "icon": "https://chat.unifai.network/assets/icon-192x192.png",
+          "enabled": true
+        }
+      ],
+      "description": "",
+      "enabled": true
+    },
+    {
       "id": "1",
       "title": "常用推荐",
       "icon": "Star",

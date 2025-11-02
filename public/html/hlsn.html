@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海螺水泥（600585）投资价值分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">   
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #FFFFFF;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 1.25rem; /* 20px */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+        }
+        .highlight-gradient-blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.05));
+        }
+        .highlight-gradient-green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0), rgba(34, 197, 94, 0.05));
+        }
+        .highlight-gradient-purple {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0), rgba(139, 92, 246, 0.05));
+        }
+        .highlight-gradient-orange {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0), rgba(249, 115, 22, 0.05));
+        }
+        .highlight-gradient-red {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0), rgba(239, 68, 68, 0.05));
+        }
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+            <!-- 标题卡片 -->
+            <div class="card md:col-span-4 p-8 flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="relative">
+                    <div class="flex items-center gap-4 mb-4">
+                        <i class="fa-solid fa-building-columns text-4xl text-blue-500"></i>
+                        <div>
+                            <h1 class="text-4xl font-black text-gray-800">海螺水泥（600585）</h1>
+                            <p class="text-lg text-gray-500 font-poppins">A股投资价值分析与估值报告</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-4">
+                        <div class="bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">水泥行业龙头</div>
+                        <div class="bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium">财务稳健</div>
+                        <div class="bg-purple-50 text-purple-700 px-4 py-2 rounded-full text-sm font-medium">估值合理</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 投资评级卡片 -->
+            <div class="card md:col-span-1 p-6 flex flex-col justify-center items-center text-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="relative">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fa-solid fa-arrow-trend-up text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">投资评级</h3>
+                    <p class="text-3xl font-black text-green-600 font-poppins mb-2">买入</p>
+                    <p class="text-sm text-gray-500">基于12-18个月投资期限</p>
+                </div>
+            </div>
+
+            <!-- 目标价格卡片 -->
+            <div class="card md:col-span-1 p-6 flex flex-col justify-center items-center text-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="relative">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fa-solid fa-bullseye text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">目标价格</h3>
+                    <p class="text-3xl font-black text-purple-600 font-poppins mb-2">31.3元</p>
+                    <p class="text-sm text-gray-500">合理估值区间: 28.5-34.0元</p>
+                </div>
+            </div>
+
+            <!-- 预期收益卡片 -->
+            <div class="card md:col-span-1 p-6 flex flex-col justify-center items-center text-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-orange"></div>
+                <div class="relative">
+                    <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fa-solid fa-chart-line text-3xl text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">预期收益率</h3>
+                    <p class="text-3xl font-black text-orange-600 font-poppins mb-2">20%-46%</p>
+                    <p class="text-sm text-gray-500">基于24元买入，35元卖出</p>
+                </div>
+            </div>
+
+            <!-- 安全边际卡片 -->
+            <div class="card md:col-span-1 p-6 flex flex-col justify-center items-center text-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-red"></div>
+                <div class="relative">
+                    <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fa-solid fa-shield-halved text-3xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-1">买入区间</h3>
+                    <p class="text-3xl font-black text-red-600 font-poppins mb-2">24-27元</p>
+                    <p class="text-sm text-gray-500">提供15%-20%安全边际</p>
+                </div>
+            </div>
+
+            <!-- 公司概况卡片 -->
+            <div class="card md:col-span-2 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-building text-blue-500"></i>公司概况
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">成立时间</p>
+                            <p class="font-semibold">1997年9月1日</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">上市时间</p>
+                            <p class="font-semibold">2002年2月7日</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">股票代码</p>
+                            <p class="font-semibold">600585</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">总部</p>
+                            <p class="font-semibold">安徽省芜湖市</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">熟料产能</p>
+                            <p class="font-semibold">2.69亿吨/年</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">水泥产能</p>
+                            <p class="font-semibold">3.88亿吨/年</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">员工人数</p>
+                            <p class="font-semibold">4.81万人</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">业务覆盖</p>
+                            <p class="font-semibold">25个省市+5个国家</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 市场地位卡片 -->
+            <div class="card md:col-span-2 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-trophy text-green-500"></i>市场地位
+                    </h3>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-semibold">全球最大单一品牌水泥供应商</p>
+                                <p class="text-sm text-gray-500">"世界水泥看中国、中国水泥看海螺"</p>
+                            </div>
+                            <i class="fa-solid fa-globe text-3xl text-green-500"></i>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-semibold">国内市场份额</p>
+                                <p class="text-sm text-gray-500">约12%-14%，位居行业第二</p>
+                            </div>
+                            <div class="text-3xl font-bold text-green-600 font-poppins">12-14%</div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-semibold">华东地区市占率</p>
+                                <p class="text-sm text-gray-500">区域市场主导地位</p>
+                            </div>
+                            <div class="text-3xl font-bold text-green-600 font-poppins">>30%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 财务表现卡片 -->
+            <div class="card md:col-span-4 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie text-purple-500"></i>2025年前三季度财务表现
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <p class="text-sm text-gray-500">营业收入</p>
+                                <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded">-10.06%</span>
+                            </div>
+                            <p class="text-2xl font-bold text-gray-800 font-poppins">612.98亿</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <p class="text-sm text-gray-500">归母净利润</p>
+                                <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">+21.28%</span>
+                            </div>
+                            <p class="text-2xl font-bold text-gray-800 font-poppins">63.05亿</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <p class="text-sm text-gray-500">毛利率</p>
+                                <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">+4.76pp</span>
+                            </div>
+                            <p class="text-2xl font-bold text-gray-800 font-poppins">24.30%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 业务构成卡片 -->
+            <div class="card md:col-span-2 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-orange"></div>
+                <div class="relative flex-grow flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-orange-500"></i>主营业务构成
+                    </h3>
+                    <div class="flex-grow h-[250px]">
+                        <canvas id="businessChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 竞争优势卡片 -->
+            <div class="card md:col-span-2 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-star text-blue-500"></i>核心竞争优势
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-sitemap text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">T型发展战略</p>
+                                <p class="text-sm text-gray-500">独特的沿江布局，降低物流成本15-20元/吨</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-gears text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">成本控制能力</p>
+                                <p class="text-sm text-gray-500">综合成本低于可比公司均值约12-23元/吨</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-lightbulb text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">技术创新能力</p>
+                                <p class="text-sm text-gray-500">与华为合作AI大模型，降低产品标准煤耗1%</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-water text-blue-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">绿色发展领先</p>
+                                <p class="text-sm text-gray-500">全球首套水泥窑碳捕集项目，成本较行业低40%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 行业背景卡片 -->
+            <div class="card md:col-span-2 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-red"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-industry text-red-500"></i>行业发展现状
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-semibold">2025年1-10月产量</p>
+                                <p class="text-sm text-gray-500">全国水泥产量同比下降</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-gray-800 font-poppins">14.17亿吨</p>
+                                <p class="text-sm text-red-500">-5.60%</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-semibold">产能利用率</p>
+                                <p class="text-sm text-gray-500">远低于工业平均水平75.1%</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-gray-800 font-poppins">50-55%</p>
+                                <p class="text-sm text-red-500">历史新低</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-semibold">行业集中度CR10</p>
+                                <p class="text-sm text-gray-500">较2020年提升8.4-12个百分点</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-2xl font-bold text-gray-800 font-poppins">60.4-65%</p>
+                                <p class="text-sm text-green-500">持续提升</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 估值方法卡片 -->
+            <div class="card md:col-span-2 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-calculator text-purple-500"></i>估值方法对比
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-semibold">市盈率法 (PE)</p>
+                                <p class="text-sm text-gray-500">10-12倍PE</p>
+                            </div>
+                            <p class="text-lg font-bold text-purple-600 font-poppins">17.0-20.4元</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-semibold">市净率法 (PB)</p>
+                                <p class="text-sm text-gray-500">0.8-1.0倍PB</p>
+                            </div>
+                            <p class="text-lg font-bold text-purple-600 font-poppins">28.7-35.9元</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="font-semibold">现金流折现法 (DCF)</p>
+                                <p class="text-sm text-gray-500">WACC=8%, 永续增长率=2%</p>
+                            </div>
+                            <p class="text-lg font-bold text-purple-600 font-poppins">42.8元</p>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-purple-50 rounded-lg border border-purple-200">
+                            <div>
+                                <p class="font-bold">综合估值</p>
+                                <p class="text-sm text-gray-500">加权平均</p>
+                            </div>
+                            <p class="text-lg font-bold text-purple-700 font-poppins">28.5-34.0元</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 风险提示卡片 -->
+            <div class="card md:col-span-4 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-red"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500"></i>风险提示
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">宏观经济与政策风险</h4>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li>• 房地产市场持续低迷，影响水泥需求</li>
+                                <li>• 基建投资增速放缓，对水泥需求拉动有限</li>
+                                <li>• 环保政策趋严，可能增加企业合规成本</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-700 mb-2">行业竞争风险</h4>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li>• 产能过剩加剧，行业产能利用率创新低</li>
+                                <li>• 价格战风险，影响企业盈利能力</li>
+                                <li>• 区域竞争加剧，长江流域市场压力较大</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 投资建议卡片 -->
+            <div class="card md:col-span-4 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-green-500"></i>投资建议与策略
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                            <h4 class="font-semibold text-green-700 mb-2">长期价值投资者</h4>
+                            <p class="text-sm text-gray-600">在24-27元区间分批建仓，长期持有，目标价格32-35元。</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            <h4 class="font-semibold text-blue-700 mb-2">稳健型投资者</h4>
+                            <p class="text-sm text-gray-600">在25-26元买入，既可享受分红收益，又有资本增值潜力。</p>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                            <h4 class="font-semibold text-orange-700 mb-2">进取型投资者</h4>
+                            <p class="text-sm text-gray-600">在股价跌至24元以下时积极买入，预期收益率可达40%以上。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 业务构成图表
+    const businessCtx = document.getElementById('businessChart').getContext('2d');
+    new Chart(businessCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['水泥熟料', '骨料及机制砂', '商品混凝土', '其他'],
+            datasets: [{
+                data: [88.5, 5.2, 3.3, 3.0],
+                backgroundColor: [
+                    'rgba(59, 130, 246, 0.7)',
+                    'rgba(34, 197, 94, 0.7)',
+                    'rgba(139, 92, 246, 0.7)',
+                    'rgba(249, 115, 22, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(59, 130, 246, 1)',
+                    'rgba(34, 197, 94, 1)',
+                    'rgba(139, 92, 246, 1)',
+                    'rgba(249, 115, 22, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            family: "'Noto Sans SC', sans-serif"
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+</html>
