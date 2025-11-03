@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寒武纪（688256）公司估值分析与投资价值评估报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">   
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #FFFFFF;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 1.25rem; /* 20px */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+        }
+        .highlight-gradient-blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.05));
+        }
+        .highlight-gradient-green {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0), rgba(16, 185, 129, 0.05));
+        }
+        .highlight-gradient-purple {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0), rgba(139, 92, 246, 0.05));
+        }
+        .highlight-gradient-orange {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0), rgba(249, 115, 22, 0.05));
+        }
+        .highlight-gradient-red {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0), rgba(239, 68, 68, 0.05));
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+            <!-- 执行摘要卡片 -->
+            <div class="card md:col-span-4 md:row-span-1 p-8 flex flex-col justify-between">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="relative">
+                    <div class="flex items-center mb-4">
+                        <i class="fa-solid fa-chart-line text-blue-500 text-2xl mr-3"></i>
+                        <h1 class="text-3xl font-bold text-gray-800">寒武纪（688256）公司估值分析</h1>
+                    </div>
+                    <p class="text-lg text-gray-600 mb-6">国产AI芯片龙头企业，业绩爆发式增长，投资价值评估报告</p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <p class="text-sm text-blue-600 mb-1">2025前三季度营收</p>
+                            <p class="text-2xl font-bold text-blue-800">46.07亿元</p>
+                            <p class="text-xs text-blue-500">同比增长2386.38%</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <p class="text-sm text-green-600 mb-1">2025前三季度净利润</p>
+                            <p class="text-2xl font-bold text-green-800">16.05亿元</p>
+                            <p class="text-xs text-green-500">扭亏为盈</p>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <p class="text-sm text-purple-600 mb-1">合理估值区间</p>
+                            <p class="text-2xl font-bold text-purple-800">5200-6800亿元</p>
+                            <p class="text-xs text-purple-500">对应股价1245-1631元</p>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <p class="text-sm text-orange-600 mb-1">投资评级</p>
+                            <p class="text-2xl font-bold text-orange-800">增持</p>
+                            <p class="text-xs text-orange-500">目标价1600元</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 季度营收趋势卡片 -->
+            <div class="card md:col-span-2 md:row-span-2 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="relative flex-shrink-0 mb-4">
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">季度营收趋势分析</h2>
+                    <p class="text-sm text-gray-500">单位：亿元</p>
+                </div>
+                <div class="relative flex-grow h-64">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 盈利能力卡片 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="relative">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">盈利能力与财务指标变化</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">2025前三季度净利润</p>
+                            <p class="text-3xl font-bold text-purple-600">16.05亿元</p>
+                            <p class="text-xs text-purple-500">成功扭亏为盈</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">毛利率</p>
+                            <p class="text-3xl font-bold text-purple-600">55%</p>
+                            <p class="text-xs text-purple-500">保持稳定高水平</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 业务结构卡片 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-orange"></div>
+                <div class="relative">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">业务结构与产品线分析</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">云端产品线占比</p>
+                            <p class="text-3xl font-bold text-orange-600">99.6%</p>
+                            <p class="text-xs text-orange-500">思元590为核心产品</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">前五大客户占比</p>
+                            <p class="text-3xl font-bold text-orange-600">94.63%</p>
+                            <p class="text-xs text-orange-500">客户集中度极高</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 行业趋势卡片 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="relative">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">AI芯片行业发展趋势</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">2025年中国AI芯片市场规模</p>
+                            <p class="text-3xl font-bold text-blue-600">1530-1800亿元</p>
+                            <p class="text-xs text-blue-500">年复合增长率超35%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">国产替代机遇</p>
+                            <p class="text-3xl font-bold text-blue-600">重大</p>
+                            <p class="text-xs text-blue-500">英伟达H20停产</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 竞争格局卡片 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="relative">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">竞争格局与市场份额</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">华为昇腾市场份额</p>
+                            <p class="text-3xl font-bold text-green-600">35%</p>
+                            <p class="text-xs text-green-500">国产AI芯片第一</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">寒武纪市场份额</p>
+                            <p class="text-3xl font-bold text-green-600">18%</p>
+                            <p class="text-xs text-green-500">国产AI芯片第二</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 估值方法卡片 -->
+            <div class="card md:col-span-2 md:row-span-2 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="relative flex-shrink-0 mb-4">
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">估值方法与结果</h2>
+                    <p class="text-sm text-gray-500">综合三种估值方法</p>
+                </div>
+                <div class="relative flex-grow h-64">
+                    <canvas id="valuationChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 投资建议卡片 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-orange"></div>
+                <div class="relative">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">1年期投资建议</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">投资评级</p>
+                            <p class="text-3xl font-bold text-orange-600">增持</p>
+                            <p class="text-xs text-orange-500">1年期</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">目标价</p>
+                            <p class="text-3xl font-bold text-orange-600">1600元</p>
+                            <p class="text-xs text-orange-500">预期收益率16%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 风险因素卡片 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-red"></div>
+                <div class="relative">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">主要风险因素</h2>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 mr-2"></i>
+                            <span>客户集中度极高（前五大客户占比94.63%）</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 mr-2"></i>
+                            <span>技术迭代风险，与英伟达存在约2年差距</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 mr-2"></i>
+                            <span>供应链受限，受美国"实体清单"影响</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 mr-2"></i>
+                            <span>市场竞争加剧，华为昇腾等竞争对手强劲</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 季度营收趋势图
+    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+    const revenueChart = new Chart(revenueCtx, {
+        type: 'bar',
+        data: {
+            labels: ['2024Q3', '2024Q4', '2025Q1', '2025Q2', '2025Q3'],
+            datasets: [{
+                label: '季度营收（亿元）',
+                data: [1.21, 3.50, 11.11, 17.69, 17.27],
+                backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                borderColor: 'rgba(16, 185, 129, 1)',
+                borderWidth: 1,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    titleFont: {
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    bodyFont: {
+                        size: 12
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        color: '#6B7280'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#6B7280'
+                    }
+                }
+            }
+        }
+    });
+
+    // 估值方法对比图
+    const valuationCtx = document.getElementById('valuationChart').getContext('2d');
+    const valuationChart = new Chart(valuationCtx, {
+        type: 'bar',
+        data: {
+            labels: ['PS估值', 'DCF估值', 'EV/EBITDA估值', '综合估值'],
+            datasets: [{
+                label: '估值结果（亿元）',
+                data: [5850, 1300, 5500, 5710],
+                backgroundColor: [
+                    'rgba(139, 92, 246, 0.7)',
+                    'rgba(239, 68, 68, 0.7)',
+                    'rgba(249, 115, 22, 0.7)',
+                    'rgba(59, 130, 246, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(139, 92, 246, 1)',
+                    'rgba(239, 68, 68, 1)',
+                    'rgba(249, 115, 22, 1)',
+                    'rgba(59, 130, 246, 1)'
+                ],
+                borderWidth: 1,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                    titleFont: {
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    bodyFont: {
+                        size: 12
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        color: '#6B7280'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#6B7280'
+                    }
+                }
+            }
+        }
+    });
+</script>
+</html>

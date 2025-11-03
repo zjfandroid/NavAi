@@ -18,11 +18,36 @@
               "description": "水泥行业龙头，当前正处于行业周期底部与价值重估的关键节点",
               "icon": "",
               "enabled": true
-            }]
+            },
+            {
+              "id": "9_2",
+              "title": "国药一致",
+              "href": "/html/gyyz.html",
+              "description": "中国最大的制药公司，专注于医疗设备和解决方案的研发与销售",
+              "icon": "",
+              "enabled": true
+            },
+            {
+              "id": "9_4",
+              "title": "寒武纪",
+              "href": "/html/hwj.html",
+              "description": "国产AI芯片龙头企业，业绩爆发式增长，投资价值评估报告",
+              "icon": "",
+              "enabled": true
+            },
+            {
+              "id": "9_3",
+              "title": "财经平台",
+              "href": "/html/cjpt.html",
+              "description": "财经内容创作平台对比分析报告",
+              "icon": "",
+              "enabled": true
+            }
+          ]
         },
         {
           "id": "cbb3e33d-408b-41ba-9e9a-e0444303e3fd",
-          "title": "美股市场",
+          "title": "美股黄金",
           "icon": "Book",
           "description": "",
           "enabled": true,
@@ -33,7 +58,16 @@
               "description": "稳定币第一股的估值分析与投资前景展望",
               "icon": "https://msx.com/files/uploads/stock_icons/CRCL_icon.png",
               "enabled": true
-            }]
+            },
+            {
+              "id": "9_2",
+              "title": "黄金短期分析",
+              "href": "/html/aug.html",
+              "description": "黄金分析报告",
+              "icon": "",
+              "enabled": true
+            }
+          ]
         }
       ],
       "description": "",

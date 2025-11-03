@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国内主要财经内容创作平台对比分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">   
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+        .highlight-gradient-blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.05));
+        }
+        .highlight-gradient-green {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0), rgba(34, 197, 94, 0.05));
+        }
+        .highlight-gradient-purple {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0), rgba(139, 92, 246, 0.05));
+        }
+        .highlight-gradient-orange {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0), rgba(249, 115, 22, 0.05));
+        }
+        .highlight-gradient-red {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0), rgba(239, 68, 68, 0.05));
+        }
+        .highlight-gradient-teal {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0), rgba(20, 184, 166, 0.05));
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+            <!-- 主标题卡片 -->
+            <div class="card md:col-span-4 md:row-span-1 p-8 flex flex-col justify-center relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="relative">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">国内主要财经内容创作平台<br>对比分析报告</h1>
+                    <p class="text-lg text-gray-500 mt-4">Digital Investment Era Content Platform Analysis</p>
+                </div>
+            </div>
+
+            <!-- 平台生态概览 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-between relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="relative">
+                    <h2 class="text-2xl font-bold text-gray-800">平台生态概览</h2>
+                    <p class="text-gray-600 mt-2">国内财经内容创作平台形成了多元化发展格局</p>
+                </div>
+                <div class="relative flex justify-between items-center mt-4">
+                    <div class="text-center">
+                        <p class="text-3xl font-bold text-green-600">3强</p>
+                        <p class="text-sm text-gray-500">证券服务平台</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-3xl font-bold text-blue-600">亿级</p>
+                        <p class="text-sm text-gray-500">综合内容平台</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-3xl font-bold text-purple-600">专业</p>
+                        <p class="text-sm text-gray-500">财经资讯平台</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三方证券服务平台 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">第三方证券服务平台三强格局</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <i class="fa-solid fa-crown text-yellow-500 mr-2"></i>
+                                <span class="font-medium">同花顺</span>
+                            </div>
+                            <span class="text-lg font-bold">3721万</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <i class="fa-solid fa-users text-blue-500 mr-2"></i>
+                            <span class="font-medium">东方财富</span>
+                            <span class="text-lg font-bold">1823万</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <i class="fa-solid fa-chart-line text-green-500 mr-2"></i>
+                            <span class="font-medium">大智慧</span>
+                            <span class="text-lg font-bold">1177万</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 月活用户对比图表 -->
+            <div class="card md:col-span-4 md:row-span-2 p-6 flex flex-col relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-teal"></div>
+                <div class="relative flex-shrink-0">
+                    <h3 class="text-xl font-bold text-gray-800">月活跃用户数对比 (万)</h3>
+                    <p class="text-gray-500 text-sm">2025年最新数据</p>
+                </div>
+                <div class="relative flex-grow mt-4 h-64 md:h-auto">
+                    <canvas id="userChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 内容生产活跃度 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-orange"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">内容生产活跃度</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="text-center">
+                            <p class="text-4xl font-bold text-orange-600">200万</p>
+                            <p class="text-sm text-gray-500">东方财富日均发帖</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-4xl font-bold text-blue-600">50万</p>
+                            <p class="text-sm text-gray-500">雪球日均讨论</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 用户粘性指标 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-red"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">用户粘性指标</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="text-center">
+                            <p class="text-4xl font-bold text-red-600">80%</p>
+                            <p class="text-sm text-gray-500">B站用户留存率</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-4xl font-bold text-green-600">75%</p>
+                            <p class="text-sm text-gray-500">东方财富留存率</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 用户粘性详细对比图表 -->
+            <div class="card md:col-span-4 md:row-span-2 p-6 flex flex-col relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="relative flex-shrink-0">
+                    <h3 class="text-xl font-bold text-gray-800">用户粘性指标对比</h3>
+                    <p class="text-gray-500 text-sm">日均使用时长、月均登录天数与用户留存率</p>
+                </div>
+                <div class="relative flex-grow mt-4 h-64 md:h-auto">
+                    <canvas id="engagementChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 内容特色与分发机制 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">内容特色与分发机制</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-fire text-red-500 mr-3"></i>
+                            <div>
+                                <p class="font-medium">雪球</p>
+                                <p class="text-sm text-gray-500">三大流分发机制，专业深度内容</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-video text-blue-500 mr-3"></i>
+                            <div>
+                                <p class="font-medium">抖音财经</p>
+                                <p class="text-sm text-gray-500">完播率优先，短视频+直播形式</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 变现模式对比 -->
+            <div class="card md:col-span-2 md:row-span-1 p-6 flex flex-col justify-center relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">多元化变现模式</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-coins text-yellow-500 mr-3"></i>
+                            <div>
+                                <p class="font-medium">抖音财经</p>
+                                <p class="text-sm text-gray-500">创作者激励+巨量星图+直播带货</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-book-open text-purple-500 mr-3"></i>
+                            <div>
+                                <p class="font-medium">知乎财经</p>
+                                <p class="text-sm text-gray-500">盐选专栏+付费咨询+好物推荐</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 平台选择建议 -->
+            <div class="card md:col-span-4 md:row-span-1 p-6 flex flex-col justify-center relative">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-orange"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">创作者平台选择建议</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <i class="fa-solid fa-user-tie text-blue-500 text-2xl mb-2"></i>
+                            <p class="font-medium text-sm">专业投资者</p>
+                            <p class="text-xs text-gray-500">雪球/知乎财经</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <i class="fa-solid fa-user-pen text-green-500 text-2xl mb-2"></i>
+                            <p class="font-medium text-sm">个人投资者</p>
+                            <p class="text-xs text-gray-500">东方财富/微博财经</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <i class="fa-solid fa-video text-purple-500 text-2xl mb-2"></i>
+                            <p class="font-medium text-sm">视频创作者</p>
+                            <p class="text-xs text-gray-500">抖音财经/B站财经</p>
+                        </div>
+                        <div class="text-center p-3 bg-gray-50 rounded-lg">
+                            <i class="fa-solid fa-hand-holding-dollar text-orange-500 text-2xl mb-2"></i>
+                            <p class="font-medium text-sm">知识付费</p>
+                            <p class="text-xs text-gray-500">知乎盐选/知识星球</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 月活用户对比图表
+    const userCtx = document.getElementById('userChart').getContext('2d');
+    const userChart = new Chart(userCtx, {
+        type: 'bar',
+        data: {
+            labels: ['微博财经', '抖音财经', '知乎财经', '同花顺', '东方财富', '雪球'],
+            datasets: [{
+                label: '月活用户数 (万)',
+                data: [50000, 10000, 8140, 3721, 1823, 400],
+                backgroundColor: [
+                    'rgba(239, 68, 68, 0.7)',
+                    'rgba(59, 130, 246, 0.7)',
+                    'rgba(139, 92, 246, 0.7)',
+                    'rgba(34, 197, 94, 0.7)',
+                    'rgba(249, 115, 22, 0.7)',
+                    'rgba(20, 184, 166, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(239, 68, 68, 1)',
+                    'rgba(59, 130, 246, 1)',
+                    'rgba(139, 92, 246, 1)',
+                    'rgba(34, 197, 94, 1)',
+                    'rgba(249, 115, 22, 1)',
+                    'rgba(20, 184, 166, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+
+    // 用户粘性指标对比图表
+    const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+    const engagementChart = new Chart(engagementCtx, {
+        type: 'radar',
+        data: {
+            labels: ['日均使用时长', '月均登录天数', '用户留存率'],
+            datasets: [
+                {
+                    label: '雪球',
+                    data: [25, 17.5, 65],
+                    backgroundColor: 'rgba(20, 184, 166, 0.2)',
+                    borderColor: 'rgba(20, 184, 166, 1)',
+                    borderWidth: 2
+                },
+                {
+                    label: '东方财富',
+                    data: [30, 23.5, 75],
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    borderColor: 'rgba(249, 115, 22, 1)',
+                    borderWidth: 2
+                },
+                {
+                    label: '抖音财经',
+                    data: [120, 27.5, 70],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 2
+                },
+                {
+                    label: 'B站财经',
+                    data: [108, 22.5, 80],
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    borderColor: 'rgba(139, 92, 246, 1)',
+                    borderWidth: 2
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    max: 120,
+                    ticks: {
+                        stepSize: 20
+                    },
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    }
+                }
+            }
+        }
+    });
+</script>
+</html>

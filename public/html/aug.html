@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄金市场投资策略分析报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">   
+    <style>
+        body {
+            font-family: 'Noto Sans SC', 'Roboto', sans-serif;
+            background-color: #FFFFFF;
+        }
+        .card {
+            background-color: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 1.25rem; /* 20px */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            position: relative;
+        }
+        .card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .highlight-gradient-blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0), rgba(59, 130, 246, 0.05));
+        }
+        .highlight-gradient-green {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0), rgba(16, 185, 129, 0.05));
+        }
+        .highlight-gradient-yellow {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0), rgba(245, 158, 11, 0.05));
+        }
+        .highlight-gradient-red {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0), rgba(239, 68, 68, 0.05));
+        }
+        .highlight-gradient-purple {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0), rgba(168, 85, 247, 0.05));
+        }
+        .price-change-negative {
+            color: #EF4444;
+        }
+        .price-change-positive {
+            color: #10B981;
+        }
+        .grid-lines {
+            background-image: linear-gradient(to right, rgba(229, 231, 235, 0.5) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(229, 231, 235, 0.5) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <div class="max-w-7xl mx-auto p-4 md:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+            
+            <!-- 核心观点卡片 -->
+            <div class="card md:col-span-4 p-8 flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="relative">
+                    <div class="text-sm font-bold text-blue-600 mb-2">投资要点 / INVESTMENT HIGHLIGHTS</div>
+                    <h1 class="text-4xl md:text-5xl font-black text-gray-800 leading-tight">黄金短期反弹大概率结束</h1>
+                    <p class="text-2xl md:text-3xl font-bold text-gray-700 mt-4">3500-3100美元区间或成重要抄底机会</p>
+                </div>
+            </div>
+
+            <!-- 核心数据卡片 -->
+            <div class="card md:col-span-2 p-6 flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-red"></div>
+                <div class="relative flex items-center gap-4">
+                    <i class="fa-solid fa-arrow-down text-4xl text-red-500"></i>
+                    <div>
+                        <div class="text-sm text-gray-500">短期反弹概率</div>
+                        <div class="text-4xl font-bold text-red-600">&lt;20%</div>
+                        <div class="text-sm text-gray-600">目标阻力位: 4090美元</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card md:col-span-2 p-6 flex flex-col justify-center">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="relative flex items-center gap-4">
+                    <i class="fa-solid fa-bullseye text-4xl text-green-500"></i>
+                    <div>
+                        <div class="text-sm text-gray-500">长线抄底区间</div>
+                        <div class="text-4xl font-bold text-green-600">3500-3100</div>
+                        <div class="text-sm text-gray-600">对应高点回调: 20%-29%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 黄金价格走势图表 -->
+            <div class="card md:col-span-4 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-yellow"></div>
+                <div class="relative flex-shrink-0 mb-4">
+                    <div class="text-lg font-bold text-gray-800">黄金价格走势分析</div>
+                    <div class="text-sm text-gray-500">2025年现货黄金价格走势与关键技术位</div>
+                </div>
+                <div class="relative flex-grow h-[300px] md:h-[400px]">
+                    <canvas id="goldPriceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 技术指标卡片 -->
+            <div class="card md:col-span-2 p-6 flex flex-col">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-purple"></div>
+                <div class="relative flex-shrink-0 mb-4">
+                    <div class="text-lg font-bold text-gray-800">技术指标分析</div>
+                    <div class="text-sm text-gray-500">日线级别关键指标状态</div>
+                </div>
+                <div class="relative flex-grow h-[250px]">
+                    <canvas id="techIndicatorsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 利空因素卡片 -->
+            <div class="card md:col-span-2 p-6">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-red"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">主要利空因素</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-minus text-red-500 mt-1"></i>
+                            <div>
+                                <div class="font-semibold text-gray-700">美联储政策转鹰</div>
+                                <div class="text-sm text-gray-600">12月降息预期从90%降至63%</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-minus text-red-500 mt-1"></i>
+                            <div>
+                                <div class="font-semibold text-gray-700">美元指数走强</div>
+                                <div class="text-sm text-gray-600">美元指数回升至99.81点</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-minus text-red-500 mt-1"></i>
+                            <div>
+                                <div class="font-semibold text-gray-700">地缘政治风险缓和</div>
+                                <div class="text-sm text-gray-600">中美贸易关系、俄乌冲突出现缓和迹象</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-minus text-red-500 mt-1"></i>
+                            <div>
+                                <div class="font-semibold text-gray-700">技术面走弱</div>
+                                <div class="text-sm text-gray-600">MACD死叉，RSI超买回落，多重看跌形态</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 支撑位分析卡片 -->
+            <div class="card md:col-span-2 p-6">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-green"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">关键支撑位分析</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <div>
+                                    <div class="font-semibold">3850美元</div>
+                                    <div class="text-xs text-gray-500">50%斐波那契回撤位</div>
+                                </div>
+                            </div>
+                            <div class="text-sm font-bold text-green-600">强支撑</div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <div>
+                                    <div class="font-semibold">3700美元</div>
+                                    <div class="text-xs text-gray-500">61.8%斐波那契回撤位</div>
+                                </div>
+                            </div>
+                            <div class="text-sm font-bold text-green-600">重要支撑</div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <div>
+                                    <div class="font-semibold">3500美元</div>
+                                    <div class="text-xs text-gray-500">200日均线位置</div>
+                                </div>
+                            </div>
+                            <div class="text-sm font-bold text-green-600">核心支撑</div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <div>
+                                    <div class="font-semibold">3100美元</div>
+                                    <div class="text-xs text-gray-500">前期震荡区间下沿</div>
+                                </div>
+                            </div>
+                            <div class="text-sm font-bold text-green-600">终极支撑</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 投资策略卡片 -->
+            <div class="card md:col-span-2 p-6">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-blue"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">分批抄底策略</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                            <div>
+                                <div class="font-semibold">3800美元</div>
+                                <div class="text-xs text-gray-500">开始建仓</div>
+                            </div>
+                            <div class="text-lg font-bold text-blue-600">20%</div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                            <div>
+                                <div class="font-semibold">3600美元</div>
+                                <div class="text-xs text-gray-500">加仓</div>
+                            </div>
+                            <div class="text-lg font-bold text-blue-600">50%</div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                            <div>
+                                <div class="font-semibold">3500美元</div>
+                                <div class="text-xs text-gray-500">重点加仓</div>
+                            </div>
+                            <div class="text-lg font-bold text-blue-600">80%</div>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                            <div>
+                                <div class="font-semibold">3100美元</div>
+                                <div class="text-xs text-gray-500">满仓</div>
+                            </div>
+                            <div class="text-lg font-bold text-blue-600">100%</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm text-gray-600">预期持有周期</div>
+                            <div class="font-bold text-gray-800">6-12个月</div>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-sm text-gray-600">目标价位</div>
+                            <div class="font-bold text-gray-800">4200-4500美元</div>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-sm text-gray-600">潜在收益率</div>
+                            <div class="font-bold text-green-600">20%-45%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 市场环境卡片 -->
+            <div class="card md:col-span-4 p-6">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-yellow"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">当前市场环境分析</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="fa-solid fa-chart-line text-yellow-600"></i>
+                                <div class="font-bold text-gray-700">价格走势</div>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-800">$4005.77</div>
+                            <div class="text-sm price-change-negative">-8.6% (vs 高点)</div>
+                            <div class="text-xs text-gray-500 mt-1">年内最高: $4381, 最低: $3273</div>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="fa-solid fa-building-columns text-yellow-600"></i>
+                                <div class="font-bold text-gray-700">央行购金</div>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-800">902吨</div>
+                            <div class="text-sm text-gray-600">前三季度净购金</div>
+                            <div class="text-xs text-gray-500 mt-1">中国连续18个月增持</div>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <div class="flex items-center gap-2 mb-2">
+                                <i class="fa-solid fa-dollar-sign text-yellow-600"></i>
+                                <div class="font-bold text-gray-700">美元指数</div>
+                            </div>
+                            <div class="text-2xl font-bold text-gray-800">99.81</div>
+                            <div class="text-sm price-change-positive">+0.2% (月内)</div>
+                            <div class="text-xs text-gray-500 mt-1">2025年下跌6.7%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 风险提示卡片 -->
+            <div class="card md:col-span-4 p-6">
+                <div class="absolute top-0 left-0 w-full h-full highlight-gradient-red"></div>
+                <div class="relative">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">风险提示</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-triangle-exclamation text-red-500 mt-1"></i>
+                            <div>
+                                <div class="font-semibold text-gray-700">价格波动风险</div>
+                                <div class="text-sm text-gray-600">黄金价格波动较大，短期内可能出现10%-20%的波动</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-triangle-exclamation text-red-500 mt-1"></i>
+                            <div>
+                                <div class="font-semibold text-gray-700">政策风险</div>
+                                <div class="text-sm text-gray-600">各国货币政策、财政政策的变化都可能影响金价</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-triangle-exclamation text-red-500 mt-1"></i>
+                            <div>
+                                <div class="font-semibold text-gray-700">地缘政治风险</div>
+                                <div class="text-sm text-gray-600">地缘政治事件具有突发性，可能导致金价大幅波动</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-triangle-exclamation text-red-500 mt-1"></i>
+                            <div>
+                                <div class="font-semibold text-gray-700">流动性风险</div>
+                                <div class="text-sm text-gray-600">市场剧烈波动时可能出现买卖价差扩大、成交困难</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 黄金价格走势图
+    const priceCtx = document.getElementById('goldPriceChart').getContext('2d');
+    const priceChart = new Chart(priceCtx, {
+        type: 'line',
+        data: {
+            labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月'],
+            datasets: [
+                {
+                    label: '现货黄金价格 (美元/盎司)',
+                    data: [3273, 3350, 3420, 3580, 3750, 3690, 3850, 3980, 4150, 4381, 4006],
+                    borderColor: '#3B82F6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#3B82F6',
+                    pointBorderColor: '#FFFFFF',
+                    pointBorderWidth: 2
+                },
+                {
+                    label: '200日均线',
+                    data: [3150, 3180, 3220, 3250, 3280, 3320, 3350, 3380, 3420, 3450, 3500],
+                    borderColor: '#EF4444',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    fill: false,
+                    pointRadius: 0
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    grid: {
+                        color: 'rgba(229, 231, 235, 0.5)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return '$' + value;
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            interaction: {
+                mode: 'nearest',
+                axis: 'x',
+                intersect: false
+            }
+        }
+    });
+
+    // 技术指标图表
+    const techCtx = document.getElementById('techIndicatorsChart').getContext('2d');
+    const techChart = new Chart(techCtx, {
+        type: 'line',
+        data: {
+            labels: ['10/1', '10/8', '10/15', '10/22', '10/29', '11/3'],
+            datasets: [
+                {
+                    label: 'RSI (14)',
+                    data: [65, 78, 85, 52, 48, 47],
+                    borderColor: '#10B981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderWidth: 2,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'MACD',
+                    data: [20, 45, 60, 35, 15, 5],
+                    borderColor: '#F59E0B',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    borderWidth: 2,
+                    yAxisID: 'y1'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            },
+            scales: {
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    min: 0,
+                    max: 100,
+                    grid: {
+                        color: 'rgba(229, 231, 235, 0.5)'
+                    },
+                    ticks: {
+                        callback: function(value) {
+                            return value;
+                        }
+                    }
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    min: -50,
+                    max: 100,
+                    grid: {
+                        drawOnChartArea: false,
+                    },
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+</script>
+</html>
